@@ -12,7 +12,7 @@ average ns = sum ns `div` length ns
 -- "x `f` y is just a syntax sugar for f x y"
 
 -- Exercise 0
--- 2 ^ 3 * 4     = (2^3) * 4
+-- 2 ^ 3 * 4     = (2 ^ 3) * 4
 -- 2 * 3 + 4 * 5 = (2 * 3) + (4 * 5)
 -- 2 + 3 * 4 ^ 5 = 2 +  (3 * (4 ^ 5))
 
