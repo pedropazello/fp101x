@@ -1,3 +1,6 @@
+-- import Prelude hiding ((||))
+import Prelude hiding ((&&))
+
 -- 00
 {-- (V) == CORRECT
 halve xs = (take n xs, drop n xs)
@@ -24,7 +27,9 @@ halve xs = (take n xs, drop n xs)
  where n = length xs `div`
 (V)
 --}
+
 -- 01
+
 {--
 safetail xs = if null xs then [] else tail xs
 (V)
@@ -59,3 +64,66 @@ safetail
          (_ : xs) -> xs
 (V)
 --}
+
+-- 02
+
+{--
+False || False = False
+_ || _ = True
+(V)
+
+False || b = b
+True || _ = True
+(V)
+
+b || c
+  | b == c = True
+  | otherwise = False
+
+b || c
+  | b == c = b
+  | otherwise = True
+(V)
+
+b || False = b
+_ || True  = True
+(V)
+
+b || c
+  | b == c = c
+  | otherwise = True
+(V)
+
+b || True = b
+_ || True = True
+
+False || False = False
+False || True = True
+True || False = True
+True || True = True
+(V)
+--}
+
+-- 03
+
+{--
+True && True = True
+_ && _ = False
+(V)
+
+a && b = if a then if b then True  else False else False
+(V)
+
+a && b = if not (a) then not (b) else True
+
+a && b = if a then b
+
+a && b = if a then if b then False else True else False
+
+a && b = if a then b else False
+(V)
+
+a && b = if b then a else False
+(V)
+--}
+-- 07
