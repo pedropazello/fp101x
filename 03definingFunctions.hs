@@ -126,4 +126,3 @@ a && b = if a then b else False
 a && b = if b then a else False
 (V)
 --}
--- 07
