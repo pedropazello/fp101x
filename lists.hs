@@ -1,34 +1,23 @@
-import Data.Char
+factors n = [x|x <- [1 .. n], n `mod` x == 0]
 
-lowers    :: String -> Int
-lowers xs = length [x|x <- xs, isLower x] 
+-- exercises 
+-- 00
+sum100 = sum [x ^ 2 | x <- [1 .. 100]]
 
-count      :: Char -> String -> Int
-count x xs = length [x'|x' <- xs, x==x']
+-- 01
+replicate' n a = [a | _ <- [1 .. n]]
 
-let2int :: Char -> Int
-let2int c = ord c - ord 'a'
+-- 02
+pyths n 
+   = [(x, y, z) | x <- [1 .. n], y <- [1 .. n], z <- [1 .. n],
+   x ^ 2 + y ^ 2 == z ^ 2]
 
-int2let :: Int -> Char
-int2let n = chr (ord 'a' + n)
+-- 03
+perfects n = [x | x <- [1 .. n], isPerfect x]
+     where isPerfect num = sum (factors num) == num
 
-shift                 :: Int -> Char -> Char
-shift n c | isLower c = int2let ((let2int c + n) `mod` 26)
-          | otherwise = c
+perfects1 n = [x | x <- [1 .. n], isPerfect x]
+     where isPerfect num = sum (init (factors num)) == num
 
-encode   :: Int -> String -> String
-encode n xs = [shift n x|x <- xs]
-
-percent     :: Int -> Int -> Float
-percent x y = 100 * ( a / b)
-    where a = fromIntegral x :: Float
-          b = fromIntegral y :: Float 
-
-freqs :: String -> [Float]
-freqs xs = [percent (count x xs) n|x <- ['a'..'z']]
-            where n = lowers xs
-
-
--------------------------------------------------------------
-
-
+-- 05
+find k t = [v | (k', v) <- t, k == k']
